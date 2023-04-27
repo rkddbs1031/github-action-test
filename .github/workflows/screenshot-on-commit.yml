@@ -1,0 +1,22 @@
+name: screenshot-on-commit
+on:
+  push:
+    branches:
+      - main
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Capture screenshot
+        run: node screenshot.js
+      - name: Commit and push changes
+        uses: EndBug/add-and-commit@v7.1.2
+        with:
+          message: "Add screenshot"
+          add: "*.png"
+          force: true
+        env:
