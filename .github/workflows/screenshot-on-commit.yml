@@ -20,3 +20,4 @@ jobs:
           add: "*.png"
           force: true
         env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_TEST_TOKEN }}
